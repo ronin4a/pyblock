@@ -1,5 +1,16 @@
-# src:
-- https://www.ibm.com/developerworks/cloud/library/cl-develop-blockchain-app-in-python/index.html
+# Description
 
-# notes:
-- need to create methods=['POST'] routes for adding blocks to the blockchain
+First attempt at creating a basic blockchain in Python.
+
+Currently based off an IBM tutorial, with some tweaks and restructuring for
+better use of Python Flask.
+
+## Notes
+- create methods=['POST'] routes for adding blocks to the blockchain
+- include login and transaction views (via microblog flask tutorial)
+
+## Future
+- implement as a clearing house for bets made on Casino World
+
+## Ref
+- https://www.ibm.com/developerworks/cloud/library/cl-develop-blockchain-app-in-python/index.html
