@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-
-{% block content %}
-  <h1> Hi, {{ current_user.username }}!</h1>
-  {% for tx in transactions %}
-  <div><p>{{ tx.author.username }} says: <b>{{ tx }}</b></p></div>
-    {% endfor %}
-{% endblock %}

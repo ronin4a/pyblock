@@ -8,13 +8,22 @@ better use of Python Flask.
 ## Latest update
 
 Completed up to step 7 (not inclusive). Need to test:
-- create transactions
-- mine using curl
-- query blockchain
+- create transactions = works; but not saving
 
-## Notes
-- create methods=['POST'] routes for adding blocks to the blockchain
-- include login and transaction views (via microblog flask tutorial)
+Test:
+- /mine, /pending_tx, /chain
+
+Dev
+- web app content
+- sqlalchemy db to store transactions/blocks/blockchain? does this defeat the
+  purpose??
+
+
+## Instructions
+
+1. export FLASK_APP=pylock.py; export FLASK_DEBUG=1;
+2. flask run
+3. execute a few RESTful commands on routes in routes.py
 
 ## Future
 - implement as a clearing house for bets made on Casino World
