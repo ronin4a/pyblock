@@ -6,7 +6,7 @@ then
   curl -POST 'http://localhost:5000/new_transaction' -H 'Content-TYpe: application/json' -d '
   {
     "author": "albert",
-    "content": "my first post"
+    "content": "my SECOND post"
   }'
 fi
 

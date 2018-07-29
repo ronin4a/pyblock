@@ -89,4 +89,44 @@ def mine_unconfirmed_transactions():
 def get_pending_tx():
   return json.dumps(blockchain.unconfirmed_transactions)
 
+"""Network functions"""
+
+# Add peers on the network
+peers = set()
+
+@app.route('/add_nodes', methods=['POST'])
+def register_new_peers():
+  nodes = request.get_json()
+  if not nodes:
+    return 'Invalid data', 400
+  for node in nodes:
+    peers.add(node)
+  return 'Success', 201
+
+def consensus():
+  """Check for the consensus on the most valid chain; simple algorithm = simply pick the longest blockchain."""
+  global blockchain
+
+  longest_chain = None
+  current_len = len(blockchain)
+
+  for node in peers:
+    response = requests.get('http://{}/chain'.format(node))
+    length = response.json()['length']
+    chain = response.json()['chain']
+    if length > current_len and blockchain.check_chain_validity(chain):
+      current_len = length
+      longest_chain = chain
+
+  if longest_chain:
+    blockchain = longest_chain
+    return True
+
+  return False
+
+@app.route('add_block', methods=['POST'])
+def validate_and_add_block():
+  """If a peer has a valid conensus block, add it to local blockchain."""
+  block_data = request.get_json() #TODO What does request do exactly? It's imported from Flask...
+
 
